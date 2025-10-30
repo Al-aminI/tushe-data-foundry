@@ -49,9 +49,7 @@ const Pillars = () => {
               <CardHeader>
                 <pillar.icon className="h-16 w-16 text-accent mb-4 transition-transform group-hover:scale-110 glow-green" />
                 <CardTitle className="text-2xl font-display text-primary">{pillar.name}</CardTitle>
-                <CardDescription className="text-lg font-semibold text-foreground/80">
-                  {pillar.tagline}
-                </CardDescription>
+                
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">{pillar.description}</p>

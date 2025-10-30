@@ -1,73 +1,92 @@
-# Welcome to your Lovable project
+# Tushe Data Foundry
 
-## Project info
+> **The Foundation of Hausa Intelligence**
 
-**URL**: https://lovable.dev/projects/7c18daaf-96d9-420a-8ba9-4c15e40350f5
+A community-driven data foundry building foundational datasets, knowledge, and intelligence for Hausa AI.
 
-## How can I edit this code?
+## About
 
-There are several ways of editing your application.
+Tushe is dedicated to building, refining, and democratizing Hausa language datasets — from speech to text, translation, and beyond. Our mission is to create the foundation for Hausa AI models that understand, speak, and think like us.
 
-**Use Lovable**
+## Our Pillars
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/7c18daaf-96d9-420a-8ba9-4c15e40350f5) and start prompting.
+- **TusheSpeech** — Comprehensive speech datasets capturing the diversity of Hausa dialects and accents
+- **TusheText** — Authentic Hausa text corpus for natural language understanding and generation
+- **TusheTranslate** — STEM-focused multilingual translation datasets connecting Hausa to global knowledge
+- **TusheModels** — Open-source NLP models trained on authentic Hausa data for real-world applications
 
-Changes made via Lovable will be committed automatically to this repo.
+## Getting Started
 
-**Use your preferred IDE**
+### Prerequisites
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- Node.js 18+ or Bun
+- npm, yarn, or bun
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Installation
 
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```bash
+# Install dependencies
+npm install
+# or
+bun install
 ```
 
-**Edit a file directly in GitHub**
+### Development
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```bash
+# Start development server
+npm run dev
+# or
+bun run dev
+```
 
-**Use GitHub Codespaces**
+The app will be available at `http://localhost:8080`
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Build
 
-## What technologies are used for this project?
+```bash
+# Create production build
+npm run build
+# or
+bun run build
+```
 
-This project is built with:
+## Tech Stack
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- **React 18** — UI library
+- **TypeScript** — Type safety
+- **Vite** — Build tool
+- **Tailwind CSS** — Styling
+- **shadcn/ui** — UI components
+- **React Router** — Routing
+- **TanStack Query** — Data fetching
 
-## How can I deploy this project?
+## Project Structure
 
-Simply open [Lovable](https://lovable.dev/projects/7c18daaf-96d9-420a-8ba9-4c15e40350f5) and click on Share -> Publish.
+```
+src/
+├── components/          # React components
+│   ├── ui/             # shadcn/ui components
+│   ├── Hero.tsx        # Hero section
+│   ├── Mission.tsx     # Mission section
+│   ├── Pillars.tsx     # Pillars showcase
+│   ├── CommunityImpact.tsx  # Community stats
+│   └── CallToAction.tsx     # CTA section
+├── pages/              # Page components
+├── hooks/              # Custom React hooks
+├── lib/                # Utility functions
+└── assets/             # Images and static files
+```
 
-## Can I connect a custom domain to my Lovable project?
+## Contributing
 
-Yes, you can!
+Join the growing movement of innovators and linguists building the future of Hausa AI. Visit our website to become a contributor.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## License
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+This project is open source and available under the MIT License.
+
+## Contact
+
+Follow us on [Twitter @tushe_ai](https://twitter.com/tushe_ai)
+

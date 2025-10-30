@@ -20,7 +20,7 @@ const CommunityImpact = () => {
           </p>
           
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
-            Join a growing movement of innovators and linguists building the future of Hausa AI. From Kano to Niamey, voices unite to shape technology that understands us.
+            Join a growing movement of innovators and linguists building the future of Hausa AI. From Nigeria to all over Africa, voices unite to shape technology that understands us.
           </p>
           
           <Button 
