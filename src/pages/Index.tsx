@@ -1,17 +1,17 @@
 import Hero from "@/components/Hero";
-import DataStreams from "@/components/DataStreams";
-import Community from "@/components/Community";
-import Impact from "@/components/Impact";
-import Footer from "@/components/Footer";
+import Mission from "@/components/Mission";
+import Pillars from "@/components/Pillars";
+import CommunityImpact from "@/components/CommunityImpact";
+import CallToAction from "@/components/CallToAction";
 
 const Index = () => {
   return (
     <div className="min-h-screen">
       <Hero />
-      <DataStreams />
-      <Community />
-      <Impact />
-      <Footer />
+      <Mission />
+      <Pillars />
+      <CommunityImpact />
+      <CallToAction />
     </div>
   );
 };

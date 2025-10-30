@@ -8,44 +8,46 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Tushe Color System - Warm Hausa Tech Blend */
-    --background: 246 25% 22%;  /* Deep Indigo #2C2A4A */
-    --foreground: 42 14% 96%;   /* Ivory #F9F6EE */
+    /* Tushe Color System - Sleek Intelligence */
+    --background: 232 38% 16%;      /* Deep Indigo #1B1F3B */
+    --foreground: 42 37% 87%;       /* Sand Beige #F1E3C6 */
 
-    --card: 246 25% 22%;
-    --card-foreground: 42 14% 96%;
+    --card: 232 38% 16%;
+    --card-foreground: 42 37% 87%;
 
-    --popover: 246 25% 22%;
-    --popover-foreground: 42 14% 96%;
+    --popover: 232 38% 20%;
+    --popover-foreground: 42 37% 87%;
 
-    --primary: 39 61% 55%;      /* Golden Ochre #D9A441 */
-    --primary-foreground: 246 25% 22%;
+    --primary: 43 100% 67%;         /* Amber Gold #FFC857 */
+    --primary-foreground: 232 38% 16%;
 
-    --secondary: 28 64% 30%;    /* Burnt Brown #7C4B1C */
-    --secondary-foreground: 42 14% 96%;
+    --secondary: 42 37% 87%;        /* Sand Beige #F1E3C6 */
+    --secondary-foreground: 232 38% 16%;
 
-    --muted: 246 25% 30%;
-    --muted-foreground: 42 14% 70%;
+    --muted: 232 38% 25%;
+    --muted-foreground: 42 37% 70%;
 
-    --accent: 32 100% 64%;      /* Electric Amber #FFB347 */
-    --accent-foreground: 246 25% 22%;
+    --accent: 168 37% 58%;          /* Accent Green #48A999 */
+    --accent-foreground: 232 38% 16%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 42 14% 96%;
+    --destructive-foreground: 42 37% 87%;
 
-    --border: 246 25% 35%;
-    --input: 246 25% 30%;
-    --ring: 39 61% 55%;
+    --border: 232 38% 30%;
+    --input: 232 38% 25%;
+    --ring: 43 100% 67%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
     /* Gradients */
-    --gradient-gold: linear-gradient(135deg, hsl(39 61% 55%), hsl(32 100% 64%));
-    --gradient-dark: linear-gradient(180deg, hsl(246 25% 22%), hsl(246 25% 18%));
+    --gradient-gold: linear-gradient(135deg, hsl(43 100% 67%), hsl(168 37% 58%));
+    --gradient-indigo: linear-gradient(180deg, hsl(232 38% 16%), hsl(232 38% 12%));
+    --gradient-root: radial-gradient(ellipse at center, hsl(43 100% 67% / 0.2), transparent);
 
     /* Shadows */
-    --glow-gold: 0 0 40px hsl(39 61% 55% / 0.4);
-    --shadow-elevated: 0 10px 30px -10px hsl(246 25% 10% / 0.5);
+    --glow-gold: 0 0 40px hsl(43 100% 67% / 0.4);
+    --glow-green: 0 0 30px hsl(168 37% 58% / 0.3);
+    --shadow-elevated: 0 10px 30px -10px hsl(232 38% 10% / 0.6);
   }
 }
 
@@ -73,8 +75,16 @@ All colors MUST be HSL.
     box-shadow: var(--glow-gold);
   }
 
+  .glow-green {
+    box-shadow: var(--glow-green);
+  }
+
   .animate-glow {
     animation: pulse-glow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
   }
 }
 
@@ -84,5 +94,14 @@ All colors MUST be HSL.
   }
   50% {
     opacity: 0.7;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
   }
 }

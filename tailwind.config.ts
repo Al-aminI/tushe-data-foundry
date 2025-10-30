@@ -14,7 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['DM Sans', 'system-ui', 'sans-serif'],
+        display: ['Poppins', 'DM Sans', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -58,7 +59,8 @@ export default {
       },
       backgroundImage: {
         'gradient-gold': 'var(--gradient-gold)',
-        'gradient-dark': 'var(--gradient-dark)',
+        'gradient-indigo': 'var(--gradient-indigo)',
+        'gradient-root': 'var(--gradient-root)',
       },
       keyframes: {
         "accordion-down": {
