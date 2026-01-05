@@ -6,7 +6,7 @@ A community-driven data foundry building foundational datasets, knowledge, and i
 
 ## About
 
-Tushe is dedicated to building, refining, and democratizing Hausa language datasets — from speech to text, translation, and beyond. Our mission is to create the foundation for Hausa AI models that understand, speak, and think like us
+Tushe is dedicated to building, refining, and democratizing Hausa language datasets — from speech to text, translation, and beyond. Our mission is to create the foundation for Hausa AI models that understand, speak, and think like us.
 
 ## Our Pillars
 
