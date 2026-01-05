@@ -18,19 +18,19 @@ export default function Dashboard() {
 
   return (
     <AppLayout>
-      <div className="p-4 md:p-6 lg:p-8 max-w-7xl mx-auto space-y-6">
+      <div className="p-4 md:p-6 lg:p-8 max-w-7xl mx-auto space-y-6 w-full overflow-x-hidden">
         {/* Header */}
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <Avatar className="w-14 h-14 border-2 border-primary">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="flex items-center gap-3 sm:gap-4">
+            <Avatar className="w-12 h-12 sm:w-14 sm:h-14 border-2 border-primary">
               <AvatarImage src={mockUser.avatar} />
               <AvatarFallback>AM</AvatarFallback>
             </Avatar>
             <div>
-              <h1 className="text-2xl font-bold text-foreground">
+              <h1 className="text-xl sm:text-2xl font-bold text-foreground">
                 {t.dashboard.greeting}, {mockUser.name.split(" ")[0]}! 👋
               </h1>
-              <p className="text-muted-foreground">
+              <p className="text-sm sm:text-base text-muted-foreground">
                 {isHausa ? "Bari mu ci gaba da aiki" : "Let's continue your great work"}
               </p>
             </div>
@@ -38,16 +38,16 @@ export default function Dashboard() {
         </div>
 
         {/* Today's Stats */}
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <Card className="bg-gradient-to-br from-primary/10 to-primary/5 border-primary/20">
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-muted-foreground">{t.dashboard.tasksCompleted}</p>
-                  <p className="text-3xl font-bold text-foreground">12</p>
+                  <p className="text-xs sm:text-sm text-muted-foreground">{t.dashboard.tasksCompleted}</p>
+                  <p className="text-2xl sm:text-3xl font-bold text-foreground">12</p>
                 </div>
-                <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center">
-                  <CheckCircle className="w-6 h-6 text-primary" />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-primary/20 flex items-center justify-center">
+                  <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                 </div>
               </div>
             </CardContent>
@@ -57,11 +57,11 @@ export default function Dashboard() {
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-muted-foreground">{t.dashboard.earned}</p>
-                  <p className="text-3xl font-bold text-foreground">₦2,450</p>
+                  <p className="text-xs sm:text-sm text-muted-foreground">{t.dashboard.earned}</p>
+                  <p className="text-2xl sm:text-3xl font-bold text-foreground">₦2,450</p>
                 </div>
-                <div className="w-12 h-12 rounded-xl bg-secondary/30 flex items-center justify-center">
-                  <Coins className="w-6 h-6 text-secondary-foreground" />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-secondary/30 flex items-center justify-center">
+                  <Coins className="w-5 h-5 sm:w-6 sm:h-6 text-secondary-foreground" />
                 </div>
               </div>
             </CardContent>
@@ -71,11 +71,11 @@ export default function Dashboard() {
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-muted-foreground">{isHausa ? "Lokaci" : "Time Active"}</p>
-                  <p className="text-3xl font-bold text-foreground">2.5h</p>
+                  <p className="text-xs sm:text-sm text-muted-foreground">{isHausa ? "Lokaci" : "Time Active"}</p>
+                  <p className="text-2xl sm:text-3xl font-bold text-foreground">2.5h</p>
                 </div>
-                <div className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center">
-                  <Clock className="w-6 h-6 text-muted-foreground" />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-muted flex items-center justify-center">
+                  <Clock className="w-5 h-5 sm:w-6 sm:h-6 text-muted-foreground" />
                 </div>
               </div>
             </CardContent>

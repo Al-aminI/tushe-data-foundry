@@ -15,7 +15,6 @@ import Onboarding from "./pages/Onboarding";
 import Dashboard from "./pages/Dashboard";
 import Tasks from "./pages/Tasks";
 import Wallet from "./pages/Wallet";
-import Leaderboard from "./pages/Leaderboard";
 import History from "./pages/History";
 import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
@@ -35,7 +34,6 @@ import AdminDashboard from "./pages/admin/AdminDashboard";
 import Contributors from "./pages/admin/Contributors";
 import Reports from "./pages/admin/Reports";
 import Moderation from "./pages/admin/Moderation";
-import AdminSettings from "./pages/admin/AdminSettings";
 import Projects from "./pages/Projects";
 import ProjectWizard from "./pages/ProjectWizard";
 import Datasets from "./pages/Datasets";
@@ -63,7 +61,6 @@ const App = () => (
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/tasks" element={<Tasks />} />
             <Route path="/wallet" element={<Wallet />} />
-            <Route path="/leaderboard" element={<Leaderboard />} />
             <Route path="/history" element={<History />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/settings" element={<Settings />} />
@@ -87,7 +84,6 @@ const App = () => (
             <Route path="/admin/contributors" element={<Contributors />} />
             <Route path="/admin/reports" element={<Reports />} />
             <Route path="/admin/moderation" element={<Moderation />} />
-            <Route path="/admin/settings" element={<AdminSettings />} />
             
             {/* Catch-all */}
             <Route path="*" element={<NotFound />} />

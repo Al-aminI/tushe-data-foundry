@@ -19,7 +19,7 @@ export default function Profile() {
 
   return (
     <AppLayout>
-      <div className="p-4 md:p-6 lg:p-8 max-w-4xl mx-auto space-y-6">
+      <div className="p-4 md:p-6 lg:p-8 max-w-4xl mx-auto space-y-6 w-full overflow-x-hidden">
         {/* Profile Header */}
         <Card className="overflow-hidden">
           <div className="h-32 bg-gradient-primary" />

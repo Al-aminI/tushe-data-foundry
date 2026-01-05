@@ -36,7 +36,7 @@ export default function AudioRecordingTask() {
 
   return (
     <AppLayout>
-      <div className="p-4 md:p-6 lg:p-8 max-w-2xl mx-auto space-y-6">
+      <div className="p-4 md:p-6 lg:p-8 max-w-2xl mx-auto space-y-6 w-full overflow-x-hidden">
         {/* Header */}
         <div className="flex items-center justify-between">
           <Button variant="ghost" onClick={() => navigate("/tasks")} className="gap-2">

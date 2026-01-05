@@ -31,11 +31,11 @@ export default function Tasks() {
 
   return (
     <AppLayout>
-      <div className="p-4 md:p-6 lg:p-8 max-w-7xl mx-auto space-y-6">
+      <div className="p-4 md:p-6 lg:p-8 max-w-7xl mx-auto space-y-6 w-full overflow-x-hidden">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h1 className="text-2xl font-bold text-foreground">{t.tasks.title}</h1>
+            <h1 className="text-xl sm:text-2xl font-bold text-foreground">{t.tasks.title}</h1>
             <p className="text-muted-foreground">
               {isHausa 
                 ? `${filteredTasks.length} ayyuka akwai yanzu`
@@ -61,7 +61,7 @@ export default function Tasks() {
 
         {/* Filter Tabs */}
         <Tabs value={activeFilter} onValueChange={setActiveFilter}>
-          <TabsList className="grid grid-cols-4 w-full md:w-auto md:inline-flex">
+          <TabsList className="grid grid-cols-4 w-full sm:w-auto sm:inline-flex overflow-x-auto">
             <TabsTrigger value="all" className="gap-2">
               <Filter className="w-4 h-4" />
               <span>{t.tasks.filter.all}</span>

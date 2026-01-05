@@ -11,7 +11,6 @@ import {
   Database,
   CheckCircle,
   Users,
-  Settings,
   LogOut,
   ChevronLeft,
   ChevronRight,
@@ -36,7 +35,6 @@ const mainNavItems = [
 const systemNavItems = [
   { path: "/admin/reports", icon: FileText, labelEn: "Reports", labelHa: "Rahotanni" },
   { path: "/admin/moderation", icon: Shield, labelEn: "Moderation", labelHa: "Kula" },
-  { path: "/admin/settings", icon: Settings, labelEn: "Settings", labelHa: "Saituna" },
 ];
 
 export function AdminSidebar({ collapsed = false, onToggle }: AdminSidebarProps) {
@@ -72,7 +70,7 @@ export function AdminSidebar({ collapsed = false, onToggle }: AdminSidebarProps)
   return (
     <aside
       className={cn(
-        "hidden md:flex flex-col bg-card border-r border-border transition-all duration-300 relative",
+        "hidden md:flex flex-col bg-card border-r border-border transition-all duration-300 relative h-screen sticky top-0",
         collapsed ? "w-16" : "w-64"
       )}
     >

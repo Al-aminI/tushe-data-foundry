@@ -6,6 +6,8 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { useLanguage } from "@/contexts/LanguageContext";
 import {
   Search,
@@ -21,6 +23,9 @@ import {
   MapPin,
   Award,
   Users,
+  ListTodo,
+  Calendar,
+  DollarSign,
 } from "lucide-react";
 
 // Mock contributors data
@@ -107,10 +112,70 @@ const mockContributors = [
   },
 ];
 
+// Mock task history for contributors
+const getMockTaskHistory = (contributorId: string) => [
+  {
+    id: "task_1",
+    title: "Translate News Article",
+    titleHa: "Fassara Labarin Jarida",
+    type: "translation",
+    status: "completed",
+    qualityScore: 96,
+    reward: 150,
+    completedDate: "2024-12-15",
+    reviewed: true,
+  },
+  {
+    id: "task_2",
+    title: "Record Hausa Sentences",
+    titleHa: "Yi Rikodin Jumlon Hausa",
+    type: "audioRecording",
+    status: "completed",
+    qualityScore: 94,
+    reward: 200,
+    completedDate: "2024-12-14",
+    reviewed: true,
+  },
+  {
+    id: "task_3",
+    title: "Classify Text Topics",
+    titleHa: "Rarraba Batutuwan Rubutu",
+    type: "textClassification",
+    status: "completed",
+    qualityScore: 98,
+    reward: 100,
+    completedDate: "2024-12-13",
+    reviewed: true,
+  },
+  {
+    id: "task_4",
+    title: "Transcribe Audio",
+    titleHa: "Rubuta Sauti",
+    type: "audioTranscription",
+    status: "pending_review",
+    qualityScore: null,
+    reward: 180,
+    completedDate: "2024-12-16",
+    reviewed: false,
+  },
+  {
+    id: "task_5",
+    title: "Sentiment Analysis",
+    titleHa: "Nazarin Ji",
+    type: "sentimentAnalysis",
+    status: "completed",
+    qualityScore: 92,
+    reward: 120,
+    completedDate: "2024-12-12",
+    reviewed: true,
+  },
+];
+
 export default function Contributors() {
   const { isHausa } = useLanguage();
   const [searchQuery, setSearchQuery] = useState("");
   const [activeTab, setActiveTab] = useState("all");
+  const [selectedContributor, setSelectedContributor] = useState<typeof mockContributors[0] | null>(null);
 
   const filteredContributors = mockContributors.filter((contributor) => {
     const matchesSearch =
@@ -158,11 +223,11 @@ export default function Contributors() {
 
   return (
     <AdminLayout>
-      <div className="p-4 md:p-6 lg:p-8 max-w-7xl mx-auto space-y-6">
+      <div className="p-4 md:p-6 lg:p-8 max-w-7xl mx-auto space-y-6 w-full overflow-x-hidden">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h1 className="text-2xl font-bold text-foreground">
+            <h1 className="text-xl sm:text-2xl font-bold text-foreground">
               {isHausa ? "Masu Gudummawa" : "Contributors"}
             </h1>
             <p className="text-muted-foreground">
@@ -172,7 +237,7 @@ export default function Contributors() {
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
           <Card>
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
@@ -243,7 +308,11 @@ export default function Contributors() {
         {/* Contributors List */}
         <div className="space-y-4">
           {filteredContributors.map((contributor) => (
-            <Card key={contributor.id} className="hover:shadow-md transition-shadow">
+            <Card 
+              key={contributor.id} 
+              className="hover:shadow-md transition-shadow cursor-pointer"
+              onClick={() => setSelectedContributor(contributor)}
+            >
               <CardContent className="p-6">
                 <div className="flex flex-col md:flex-row md:items-center gap-4">
                   <Avatar className="w-16 h-16 border-2 border-border">
@@ -252,8 +321,8 @@ export default function Contributors() {
                   </Avatar>
 
                   <div className="flex-1 min-w-0 space-y-2">
-                    <div className="flex items-center gap-3">
-                      <h3 className="font-semibold text-foreground">{contributor.name}</h3>
+                    <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                      <h3 className="font-semibold text-sm sm:text-base text-foreground">{contributor.name}</h3>
                       {contributor.verified && (
                         <Badge variant="outline" className="bg-blue-500/10 text-blue-600 border-blue-500/30">
                           <CheckCircle className="w-3 h-3 mr-1" />
@@ -263,50 +332,50 @@ export default function Contributors() {
                       {getStatusBadge(contributor.status)}
                     </div>
 
-                    <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+                    <div className="flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center gap-2 sm:gap-4 text-xs sm:text-sm text-muted-foreground">
                       <span className="flex items-center gap-1.5">
-                        <Mail className="w-4 h-4" />
-                        {contributor.email}
+                        <Mail className="w-3 h-3 sm:w-4 sm:h-4" />
+                        <span className="truncate">{contributor.email}</span>
                       </span>
                       <span className="flex items-center gap-1.5">
-                        <Phone className="w-4 h-4" />
-                        {contributor.phone}
+                        <Phone className="w-3 h-3 sm:w-4 sm:h-4" />
+                        <span className="truncate">{contributor.phone}</span>
                       </span>
                       <span className="flex items-center gap-1.5">
-                        <MapPin className="w-4 h-4" />
-                        {contributor.location}
+                        <MapPin className="w-3 h-3 sm:w-4 sm:h-4" />
+                        <span className="truncate">{contributor.location}</span>
                       </span>
                     </div>
 
-                    <div className="flex flex-wrap items-center gap-6 text-sm">
-                      <div>
+                    <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center gap-3 sm:gap-6 text-xs sm:text-sm">
+                      <div className="min-w-0">
                         <span className="text-muted-foreground">{isHausa ? "Matsayi" : "Level"}: </span>
-                        <span className="font-medium text-foreground">{contributor.level}</span>
+                        <span className="font-medium text-foreground whitespace-nowrap">{contributor.level}</span>
                       </div>
-                      <div>
+                      <div className="min-w-0">
                         <span className="text-muted-foreground">{isHausa ? "Ayyuka" : "Tasks"}: </span>
-                        <span className="font-medium text-foreground">{contributor.tasksCompleted.toLocaleString()}</span>
+                        <span className="font-medium text-foreground whitespace-nowrap">{contributor.tasksCompleted.toLocaleString()}</span>
                       </div>
-                      <div>
+                      <div className="min-w-0">
                         <span className="text-muted-foreground">{isHausa ? "Inganci" : "Quality"}: </span>
-                        <span className="font-medium text-foreground flex items-center gap-1">
-                          <Star className="w-3 h-3 text-secondary" />
+                        <span className="font-medium text-foreground flex items-center gap-1 whitespace-nowrap">
+                          <Star className="w-3 h-3 text-secondary shrink-0" />
                           {contributor.qualityScore}%
                         </span>
                       </div>
-                      <div>
+                      <div className="min-w-0 col-span-2 sm:col-span-1">
                         <span className="text-muted-foreground">{isHausa ? "Jimlar Kuɗi" : "Total Earnings"}: </span>
-                        <span className="font-medium text-foreground">₦{contributor.totalEarnings.toLocaleString()}</span>
+                        <span className="font-medium text-foreground whitespace-nowrap">₦{contributor.totalEarnings.toLocaleString()}</span>
                       </div>
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-3">
-                    <div className="text-right text-sm text-muted-foreground">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3">
+                    <div className="text-left sm:text-right text-xs sm:text-sm text-muted-foreground">
                       <p>{isHausa ? "An Shiga" : "Joined"}: {contributor.joinedDate}</p>
                       <p>{isHausa ? "Ayyuka na ƙarshe" : "Last Active"}: {contributor.lastActive}</p>
                     </div>
-                    <Button variant="ghost" size="icon">
+                    <Button variant="ghost" size="icon" className="hidden sm:flex">
                       <MoreVertical className="w-4 h-4" />
                     </Button>
                   </div>
@@ -329,6 +398,144 @@ export default function Contributors() {
             </CardContent>
           </Card>
         )}
+
+        {/* Contributor Tasks Dialog */}
+        <Dialog open={!!selectedContributor} onOpenChange={(open) => !open && setSelectedContributor(null)}>
+          <DialogContent className="max-w-4xl max-h-[90vh] w-[95vw] sm:w-full flex flex-col">
+            <DialogHeader>
+              <DialogTitle className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3">
+                <Avatar className="w-8 h-8 sm:w-10 sm:h-10 shrink-0">
+                  <AvatarImage src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${selectedContributor?.name}`} />
+                  <AvatarFallback className="text-xs sm:text-sm">{selectedContributor?.name?.slice(0, 2)}</AvatarFallback>
+                </Avatar>
+                <div className="min-w-0">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="text-base sm:text-lg font-semibold break-words">{selectedContributor?.name}</span>
+                    {selectedContributor?.verified && (
+                      <Badge variant="outline" className="bg-blue-500/10 text-blue-600 border-blue-500/30 text-xs shrink-0">
+                        <CheckCircle className="w-3 h-3 mr-1" />
+                        {isHausa ? "An Tabbatar" : "Verified"}
+                      </Badge>
+                    )}
+                  </div>
+                  <DialogDescription className="text-xs sm:text-sm text-muted-foreground mt-1 break-words">
+                    {isHausa ? "Duba tarihin ayyukan mai gudummawa" : "View contributor's task history"}
+                  </DialogDescription>
+                </div>
+              </DialogTitle>
+            </DialogHeader>
+
+            {selectedContributor && (
+              <ScrollArea className="flex-1 pr-2 sm:pr-4 -mr-2 sm:-mr-4">
+                <div className="space-y-4 sm:space-y-6">
+                  {/* Contributor Stats */}
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 md:gap-4">
+                    <Card>
+                      <CardContent className="p-3 sm:p-4">
+                        <div className="flex items-center gap-2">
+                          <ListTodo className="w-4 h-4 sm:w-5 sm:h-5 text-primary shrink-0" />
+                          <div className="min-w-0">
+                            <p className="text-xs text-muted-foreground truncate">{isHausa ? "Ayyuka" : "Tasks"}</p>
+                            <p className="text-base sm:text-lg font-bold truncate">{selectedContributor.tasksCompleted.toLocaleString()}</p>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                    <Card>
+                      <CardContent className="p-3 sm:p-4">
+                        <div className="flex items-center gap-2">
+                          <Star className="w-4 h-4 sm:w-5 sm:h-5 text-secondary shrink-0" />
+                          <div className="min-w-0">
+                            <p className="text-xs text-muted-foreground truncate">{isHausa ? "Inganci" : "Quality"}</p>
+                            <p className="text-base sm:text-lg font-bold truncate">{selectedContributor.qualityScore}%</p>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                    <Card>
+                      <CardContent className="p-3 sm:p-4">
+                        <div className="flex items-center gap-2">
+                          <Award className="w-4 h-4 sm:w-5 sm:h-5 text-accent shrink-0" />
+                          <div className="min-w-0">
+                            <p className="text-xs text-muted-foreground truncate">{isHausa ? "Matsayi" : "Level"}</p>
+                            <p className="text-base sm:text-lg font-bold truncate">{selectedContributor.level}</p>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                    <Card>
+                      <CardContent className="p-3 sm:p-4">
+                        <div className="flex items-center gap-2">
+                          <DollarSign className="w-4 h-4 sm:w-5 sm:h-5 text-green-600 shrink-0" />
+                          <div className="min-w-0">
+                            <p className="text-xs text-muted-foreground truncate">{isHausa ? "Jimlar Kuɗi" : "Total Earnings"}</p>
+                            <p className="text-base sm:text-lg font-bold truncate">₦{selectedContributor.totalEarnings.toLocaleString()}</p>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </div>
+
+                  {/* Task History */}
+                  <div>
+                    <h3 className="text-sm sm:text-base md:text-lg font-semibold mb-3 sm:mb-4 break-words">
+                      {isHausa ? "Tarihin Ayyuka" : "Task History"}
+                    </h3>
+                    <div className="space-y-2 sm:space-y-3">
+                      {getMockTaskHistory(selectedContributor.id).map((task) => (
+                        <Card key={task.id} className="hover:shadow-sm transition-shadow">
+                          <CardContent className="p-3 sm:p-4">
+                            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
+                              <div className="flex-1 min-w-0 w-full sm:w-auto">
+                                <div className="flex flex-wrap items-center gap-2 mb-2">
+                                  <h4 className="font-medium text-sm sm:text-base text-foreground break-words flex-1 min-w-0">
+                                    {isHausa ? task.titleHa : task.title}
+                                  </h4>
+                                  <Badge variant="outline" className="text-xs shrink-0">
+                                    {task.type}
+                                  </Badge>
+                                </div>
+                                <div className="flex flex-wrap items-center gap-x-3 sm:gap-x-4 gap-y-1 text-xs sm:text-sm text-muted-foreground">
+                                  <span className="flex items-center gap-1 whitespace-nowrap">
+                                    <Calendar className="w-3 h-3 shrink-0" />
+                                    {task.completedDate}
+                                  </span>
+                                  <span className="flex items-center gap-1 whitespace-nowrap">
+                                    <DollarSign className="w-3 h-3 shrink-0" />
+                                    ₦{task.reward}
+                                  </span>
+                                  {task.qualityScore !== null && (
+                                    <span className="flex items-center gap-1 whitespace-nowrap">
+                                      <Star className="w-3 h-3 text-secondary shrink-0" />
+                                      {task.qualityScore}%
+                                    </span>
+                                  )}
+                                </div>
+                              </div>
+                              <div className="flex flex-col items-end gap-2 shrink-0 w-full sm:w-auto">
+                                {task.status === "completed" && task.reviewed ? (
+                                  <Badge className="bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300 text-xs">
+                                    <CheckCircle className="w-3 h-3 mr-1" />
+                                    {isHausa ? "An Kammala" : "Completed"}
+                                  </Badge>
+                                ) : (
+                                  <Badge className="bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300 text-xs">
+                                    <Clock className="w-3 h-3 mr-1" />
+                                    {isHausa ? "Jiran Bita" : "Pending Review"}
+                                  </Badge>
+                                )}
+                              </div>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </ScrollArea>
+            )}
+          </DialogContent>
+        </Dialog>
       </div>
     </AdminLayout>
   );

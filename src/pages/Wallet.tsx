@@ -63,17 +63,17 @@ export default function Wallet() {
 
   return (
     <AppLayout>
-      <div className="p-4 md:p-6 lg:p-8 max-w-4xl mx-auto space-y-6">
+      <div className="p-4 md:p-6 lg:p-8 max-w-4xl mx-auto space-y-6 w-full overflow-x-hidden">
         {/* Header */}
         <div>
-          <h1 className="text-2xl font-bold text-foreground">{t.wallet.title}</h1>
+          <h1 className="text-xl sm:text-2xl font-bold text-foreground">{t.wallet.title}</h1>
           <p className="text-muted-foreground">
             {isHausa ? "Duba samun kuɗinku da cire kuɗi" : "Manage your earnings and withdrawals"}
           </p>
         </div>
 
         {/* Balance Cards */}
-        <div className="grid md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <Card className="md:col-span-2 bg-gradient-to-br from-primary to-hausa-green-dark text-primary-foreground">
             <CardContent className="p-6">
               <div className="flex items-start justify-between">

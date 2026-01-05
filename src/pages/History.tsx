@@ -154,7 +154,7 @@ export default function History() {
 
   return (
     <AppLayout>
-      <div className="p-4 md:p-6 lg:p-8 max-w-4xl mx-auto space-y-6">
+      <div className="p-4 md:p-6 lg:p-8 max-w-4xl mx-auto space-y-6 w-full overflow-x-hidden">
         {/* Header */}
         <div>
           <h1 className="text-2xl font-bold text-foreground">

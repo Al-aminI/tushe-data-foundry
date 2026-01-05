@@ -51,11 +51,11 @@ export default function AdminDashboard() {
 
   return (
     <AdminLayout>
-      <div className="p-4 md:p-6 lg:p-8 max-w-7xl mx-auto space-y-6">
+      <div className="p-4 md:p-6 lg:p-8 max-w-7xl mx-auto space-y-6 w-full overflow-x-hidden">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h1 className="text-2xl font-bold text-foreground">
+            <h1 className="text-xl sm:text-2xl font-bold text-foreground">
               {isHausa ? "Dashodin Gudanarwa" : "Admin Dashboard"}
             </h1>
             <p className="text-muted-foreground">
@@ -73,15 +73,15 @@ export default function AdminDashboard() {
         </div>
 
         {/* Key Metrics */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
           <Card className="bg-gradient-to-br from-primary/10 to-primary/5 border-primary/20">
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-xs sm:text-sm text-muted-foreground">
                     {isHausa ? "Masu Gudummawa" : "Contributors"}
                   </p>
-                  <p className="text-2xl font-bold text-foreground">
+                  <p className="text-xl sm:text-2xl font-bold text-foreground">
                     {adminStats.totalContributors.toLocaleString()}
                   </p>
                   <p className="text-xs text-primary flex items-center gap-1 mt-1">
@@ -89,7 +89,7 @@ export default function AdminDashboard() {
                     +12.5% {isHausa ? "wannan watan" : "this month"}
                   </p>
                 </div>
-                <Users className="w-10 h-10 text-primary/60" />
+                <Users className="w-8 h-8 sm:w-10 sm:h-10 text-primary/60" />
               </div>
             </CardContent>
           </Card>
@@ -98,10 +98,10 @@ export default function AdminDashboard() {
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-xs sm:text-sm text-muted-foreground">
                     {isHausa ? "Ayyukan da aka Kammala" : "Tasks Completed"}
                   </p>
-                  <p className="text-2xl font-bold text-foreground">
+                  <p className="text-xl sm:text-2xl font-bold text-foreground">
                     {adminStats.tasksCompleted.toLocaleString()}
                   </p>
                   <p className="text-xs text-green-600 flex items-center gap-1 mt-1">
@@ -109,7 +109,7 @@ export default function AdminDashboard() {
                     +8.3% {isHausa ? "wannan watan" : "this month"}
                   </p>
                 </div>
-                <CheckCircle className="w-10 h-10 text-green-600/60" />
+                <CheckCircle className="w-8 h-8 sm:w-10 sm:h-10 text-green-600/60" />
               </div>
             </CardContent>
           </Card>

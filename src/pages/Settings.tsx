@@ -39,10 +39,10 @@ export default function Settings() {
 
   return (
     <AppLayout>
-      <div className="p-4 md:p-6 lg:p-8 max-w-2xl mx-auto space-y-6">
+      <div className="p-4 md:p-6 lg:p-8 max-w-2xl mx-auto space-y-6 w-full overflow-x-hidden">
         {/* Header */}
         <div>
-          <h1 className="text-2xl font-bold text-foreground">{t.settings.title}</h1>
+          <h1 className="text-xl sm:text-2xl font-bold text-foreground">{t.settings.title}</h1>
           <p className="text-muted-foreground">
             {isHausa ? "Sarrafa asusunku da abubuwan da kuke so" : "Manage your account and preferences"}
           </p>
@@ -98,7 +98,7 @@ export default function Settings() {
         </Card>
 
         {/* Notifications */}
-        <Card>
+        {/* <Card>
           <CardHeader className="pb-3">
             <CardTitle className="text-base flex items-center gap-2">
               <Bell className="w-5 h-5 text-primary" />
@@ -145,34 +145,9 @@ export default function Settings() {
               />
             </div>
           </CardContent>
-        </Card>
+        </Card> */}
 
-        {/* Privacy & Security */}
-        <Card>
-          <CardHeader className="pb-3">
-            <CardTitle className="text-base flex items-center gap-2">
-              <Shield className="w-5 h-5 text-primary" />
-              {t.settings.privacy}
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-3">
-            <Button variant="ghost" className="w-full justify-between h-auto py-3">
-              <span>{isHausa ? "Canja Kalmar Sirri" : "Change Password"}</span>
-              <ChevronRight className="w-4 h-4" />
-            </Button>
-            <Button variant="ghost" className="w-full justify-between h-auto py-3">
-              <span>{isHausa ? "Tabbatarwa a matakai biyu" : "Two-Factor Authentication"}</span>
-              <ChevronRight className="w-4 h-4" />
-            </Button>
-            <Button variant="ghost" className="w-full justify-between h-auto py-3">
-              <div className="flex items-center gap-2">
-                <Download className="w-4 h-4" />
-                <span>{isHausa ? "Fitar da Bayanan" : "Export Data"}</span>
-              </div>
-              <ChevronRight className="w-4 h-4" />
-            </Button>
-          </CardContent>
-        </Card>
+        
 
         {/* Help */}
         <Card>
@@ -183,14 +158,28 @@ export default function Settings() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
-            <Button variant="ghost" className="w-full justify-between h-auto py-3">
-              <span>FAQ</span>
-              <ChevronRight className="w-4 h-4" />
-            </Button>
-            <Button variant="ghost" className="w-full justify-between h-auto py-3">
-              <span>{isHausa ? "Tuntubi Tallafi" : "Contact Support"}</span>
-              <ChevronRight className="w-4 h-4" />
-            </Button>
+            <a
+              href="https://discord.gg/VRxBxgYCs8"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block"
+            >
+              <Button variant="ghost" className="w-full justify-between h-auto py-3">
+                <span>FAQ</span>
+                <ChevronRight className="w-4 h-4" />
+              </Button>
+            </a>
+            <a
+              href="https://discord.gg/VRxBxgYCs8"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block"
+            >
+              <Button variant="ghost" className="w-full justify-between h-auto py-3">
+                <span>{isHausa ? "Tuntubi Tallafi" : "Contact Support"}</span>
+                <ChevronRight className="w-4 h-4" />
+              </Button>
+            </a>
           </CardContent>
         </Card>
 

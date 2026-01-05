@@ -9,7 +9,6 @@ import {
   Home,
   ListTodo,
   Wallet,
-  Trophy,
   User,
   History,
   Settings,
@@ -29,7 +28,6 @@ const mainNavItems = [
   { path: "/dashboard", icon: Home, labelEn: "Dashboard", labelHa: "Gida" },
   { path: "/tasks", icon: ListTodo, labelEn: "Tasks", labelHa: "Ayyuka" },
   { path: "/wallet", icon: Wallet, labelEn: "Wallet", labelHa: "Jakar Kuɗi" },
-  { path: "/leaderboard", icon: Trophy, labelEn: "Leaderboard", labelHa: "Jerin Jagora" },
   { path: "/history", icon: History, labelEn: "History", labelHa: "Tarihi" },
 ];
 
@@ -72,7 +70,7 @@ export function AppSidebar({ collapsed = false, onToggle }: SidebarProps) {
   return (
     <aside
       className={cn(
-        "hidden md:flex flex-col bg-card border-r border-border transition-all duration-300 relative",
+        "hidden md:flex flex-col bg-card border-r border-border transition-all duration-300 relative h-screen sticky top-0",
         collapsed ? "w-16" : "w-64"
       )}
     >

@@ -11,12 +11,12 @@ const Hero = () => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Navigation Header */}
       <header className="absolute top-0 left-0 right-0 z-50">
-        <div className="container mx-auto px-6 h-20 flex items-center justify-between">
+        <div className="container mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center glow-gold">
-              <span className="text-primary-foreground font-bold text-xl">T</span>
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-primary flex items-center justify-center glow-gold">
+              <span className="text-primary-foreground font-bold text-lg sm:text-xl">T</span>
             </div>
-            <span className="font-display font-bold text-2xl text-gradient-gold">Tushe</span>
+            <span className="font-display font-bold text-xl sm:text-2xl text-gradient-gold">Tushe</span>
           </div>
           
           <nav className="hidden md:flex items-center gap-6">
@@ -31,23 +31,23 @@ const Hero = () => {
             </a>
           </nav>
           
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <Button 
               variant="ghost" 
               size="sm"
               onClick={() => setLanguage(language === "en" ? "ha" : "en")}
-              className="gap-1.5 text-secondary/80 hover:text-secondary"
+              className="gap-1.5 text-secondary/80 hover:text-secondary h-8 sm:h-9 px-2 sm:px-3"
             >
-              <Globe className="w-4 h-4" />
+              <Globe className="w-3 h-3 sm:w-4 sm:h-4" />
               <span className="hidden sm:inline">{isHausa ? "EN" : "HA"}</span>
             </Button>
             <Link to="/login">
-              <Button variant="ghost" size="sm" className="text-secondary/80 hover:text-secondary">
+              <Button variant="ghost" size="sm" className="text-secondary/80 hover:text-secondary h-8 sm:h-9 px-2 sm:px-3 text-xs sm:text-sm">
                 {isHausa ? "Shiga" : "Login"}
               </Button>
             </Link>
             <Link to="/register">
-              <Button size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground glow-gold">
+              <Button size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground glow-gold h-8 sm:h-9 px-3 sm:px-4 text-xs sm:text-sm">
                 {isHausa ? "Yi Rajista" : "Register"}
               </Button>
             </Link>

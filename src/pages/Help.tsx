@@ -98,20 +98,20 @@ export default function Help() {
 
   return (
     <AppLayout>
-      <div className="p-4 md:p-6 lg:p-8 max-w-4xl mx-auto space-y-6">
+      <div className="p-4 md:p-6 lg:p-8 max-w-4xl mx-auto space-y-6 w-full overflow-x-hidden">
         {/* Header */}
         <div className="text-center">
           <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
             <HelpCircle className="w-8 h-8 text-primary" />
           </div>
-          <h1 className="text-2xl font-bold text-foreground">{t.settings.help}</h1>
+          <h1 className="text-xl sm:text-2xl font-bold text-foreground">{t.settings.help}</h1>
           <p className="text-muted-foreground mt-2">
             {isHausa ? "Samun amsoshi da taimako da kuke buƙata" : "Get the answers and support you need"}
           </p>
         </div>
 
         {/* Search */}
-        <div className="relative max-w-xl mx-auto">
+        {/* <div className="relative max-w-xl mx-auto">
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
           <Input
             placeholder={isHausa ? "Bincika tambayoyi..." : "Search questions..."}
@@ -119,27 +119,35 @@ export default function Help() {
             onChange={(e) => setSearchQuery(e.target.value)}
             className="pl-12 h-12 text-lg"
           />
-        </div>
+        </div> */}
 
         {/* Quick Links */}
         <div className="grid md:grid-cols-3 gap-4">
           {guides.map((guide, i) => (
-            <Card key={i} className="group cursor-pointer hover:shadow-md transition-all hover:-translate-y-1">
-              <CardContent className="p-4 flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
-                  <guide.icon className="w-6 h-6 text-primary" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <h3 className="font-medium text-foreground truncate">
-                    {isHausa ? guide.titleHa : guide.titleEn}
-                  </h3>
-                  <p className="text-sm text-muted-foreground truncate">
-                    {isHausa ? guide.descHa : guide.descEn}
-                  </p>
-                </div>
-                <ChevronRight className="w-4 h-4 text-muted-foreground" />
-              </CardContent>
-            </Card>
+            <a
+              key={i}
+              href="https://discord.gg/VRxBxgYCs8"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block"
+            >
+              <Card className="group cursor-pointer hover:shadow-md transition-all hover:-translate-y-1">
+                <CardContent className="p-4 flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
+                    <guide.icon className="w-6 h-6 text-primary" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-medium text-foreground truncate">
+                      {isHausa ? guide.titleHa : guide.titleEn}
+                    </h3>
+                    <p className="text-sm text-muted-foreground truncate">
+                      {isHausa ? guide.descHa : guide.descEn}
+                    </p>
+                  </div>
+                  <ChevronRight className="w-4 h-4 text-muted-foreground" />
+                </CardContent>
+              </Card>
+            </a>
           ))}
         </div>
 
@@ -166,50 +174,35 @@ export default function Help() {
           </CardContent>
         </Card>
 
-        {/* Contact Support */}
-        <Card className="bg-gradient-to-br from-primary/5 to-secondary/5">
-          <CardContent className="p-6">
-            <h3 className="text-lg font-semibold text-foreground mb-4 text-center">
-              {isHausa ? "Har yanzu kuna da tambaya?" : "Still have questions?"}
-            </h3>
-            <div className="grid md:grid-cols-3 gap-4">
-              <Button variant="outline" className="h-auto py-4 flex-col gap-2">
-                <MessageSquare className="w-6 h-6 text-primary" />
-                <span>{isHausa ? "Hira da Mu" : "Live Chat"}</span>
-              </Button>
-              <Button variant="outline" className="h-auto py-4 flex-col gap-2">
-                <Mail className="w-6 h-6 text-primary" />
-                <span>{isHausa ? "Aika Imel" : "Send Email"}</span>
-              </Button>
-              <Button variant="outline" className="h-auto py-4 flex-col gap-2">
-                <Phone className="w-6 h-6 text-primary" />
-                <span>{isHausa ? "Kira Mu" : "Call Us"}</span>
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
-
+       
         {/* Community Link */}
-        <Card>
-          <CardContent className="p-4 flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
-                <MessageSquare className="w-5 h-5 text-blue-600" />
+        <a
+          href="https://discord.gg/VRxBxgYCs8"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block"
+        >
+          <Card className="cursor-pointer hover:shadow-md transition-all">
+            <CardContent className="p-4 flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
+                  <MessageSquare className="w-5 h-5 text-blue-600" />
+                </div>
+                <div>
+                  <p className="font-medium text-foreground">
+                    {isHausa ? "Shiga Al'ummarmu" : "Join Our Community"}
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    {isHausa ? "Haɗu da sauran masu gudummawa" : "Connect with other contributors"}
+                  </p>
+                </div>
               </div>
-              <div>
-                <p className="font-medium text-foreground">
-                  {isHausa ? "Shiga Al'ummarmu" : "Join Our Community"}
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  {isHausa ? "Haɗu da sauran masu gudummawa" : "Connect with other contributors"}
-                </p>
-              </div>
-            </div>
-            <Button variant="ghost" size="icon">
-              <ExternalLink className="w-4 h-4" />
-            </Button>
-          </CardContent>
-        </Card>
+              <Button variant="ghost" size="icon">
+                <ExternalLink className="w-4 h-4" />
+              </Button>
+            </CardContent>
+          </Card>
+        </a>
       </div>
     </AppLayout>
   );

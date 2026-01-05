@@ -70,9 +70,9 @@ export function TaskCard({
             <Icon className={cn("w-6 h-6", typeConfig.color)} />
           </div>
           
-          <div className="flex-1 min-w-0">
-            <div className="flex items-start justify-between gap-2">
-              <h3 className="font-semibold text-foreground truncate">
+          <div className="flex-1 min-w-0 overflow-hidden">
+            <div className="flex items-start justify-between gap-2 mb-1">
+              <h3 className="font-semibold text-sm sm:text-base text-foreground line-clamp-1 flex-1 min-w-0">
                 {isHausa ? titleHa : title}
               </h3>
               <Badge variant="secondary" className={cn("text-xs shrink-0", diffConfig.class)}>
@@ -80,24 +80,24 @@ export function TaskCard({
               </Badge>
             </div>
             
-            <p className="text-sm text-muted-foreground mt-1 line-clamp-2">
+            <p className="text-xs sm:text-sm text-muted-foreground line-clamp-2 break-words">
               {isHausa ? descriptionHa : description}
             </p>
             
-            <div className="flex items-center gap-4 mt-3 text-sm">
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4 mt-3 text-xs sm:text-sm">
               <div className="flex items-center gap-1.5 text-primary font-semibold">
-                <Coins className="w-4 h-4" />
+                <Coins className="w-3 h-3 sm:w-4 sm:h-4 shrink-0" />
                 <span>₦{reward}</span>
               </div>
               
               <div className="flex items-center gap-1.5 text-muted-foreground">
-                <Clock className="w-4 h-4" />
+                <Clock className="w-3 h-3 sm:w-4 sm:h-4 shrink-0" />
                 <span>{estimatedTime}</span>
               </div>
               
               <div className="flex items-center gap-1.5 text-muted-foreground ml-auto">
-                <Zap className="w-4 h-4 text-accent" />
-                <span>{available} {isHausa ? "akwai" : "available"}</span>
+                <Zap className="w-3 h-3 sm:w-4 sm:h-4 text-accent shrink-0" />
+                <span className="whitespace-nowrap">{available} {isHausa ? "akwai" : "available"}</span>
               </div>
             </div>
           </div>
