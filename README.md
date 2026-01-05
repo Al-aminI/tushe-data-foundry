@@ -51,6 +51,20 @@ npm run build
 bun run build
 ```
 
+The build output will be in the `dist/` directory.
+
+### Deployment
+
+This is a Single Page Application (SPA) using client-side routing. When deploying, ensure your server is configured to redirect all routes to `index.html` so that React Router can handle routing.
+
+**Configuration files included:**
+- `public/_redirects` - For Netlify deployments
+- `vercel.json` - For Vercel deployments  
+- `public/.htaccess` - For Apache servers
+- `nginx.conf.example` - Example configuration for Nginx servers
+
+**Important:** Make sure your hosting provider is configured to serve `index.html` for all routes (except static assets) to prevent 404 errors on direct route access.
+
 ## Tech Stack
 
 - **React 18** — UI library
