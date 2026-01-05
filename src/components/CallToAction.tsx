@@ -1,7 +1,11 @@
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { Linkedin, Mail, Twitter, MessageCircle } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const CallToAction = () => {
+  const { isHausa } = useLanguage();
+
   return (
     <section className="relative py-32 px-6 overflow-hidden">
       {/* Background Glow */}
@@ -10,27 +14,34 @@ const CallToAction = () => {
       
       <div className="container mx-auto text-center relative z-10">
         <h2 className="text-4xl md:text-6xl font-display font-bold mb-8 text-primary">
-          Ready to shape the future of Hausa AI?
+          {isHausa ? "Shirye don tsara makomar Hausa AI?" : "Ready to shape the future of Hausa AI?"}
         </h2>
         
         <p className="text-xl text-foreground/80 mb-12 max-w-2xl mx-auto">
-          Join us in building the foundation that will power the next generation of intelligent systems
+          {isHausa 
+            ? "Ku shiga tare da mu wajen gina tushen da zai ƙarfafa tsarin hankali na gaba"
+            : "Join us in building the foundation that will power the next generation of intelligent systems"
+          }
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-          <Button 
-            size="lg" 
-            className="bg-primary hover:bg-primary/90 text-primary-foreground glow-gold font-semibold px-8 py-6 text-lg"
-          >
-            Connect With Us
-          </Button>
-          <Button 
-            size="lg" 
-            variant="outline" 
-            className="border-2 border-accent text-accent hover:bg-accent/10 font-semibold px-8 py-6 text-lg"
-          >
-            Partnerships & Investment
-          </Button>
+          <Link to="/register">
+            <Button 
+              size="lg" 
+              className="bg-primary hover:bg-primary/90 text-primary-foreground glow-gold font-semibold px-8 py-6 text-lg"
+            >
+              {isHausa ? "Fara Gudummawa" : "Start Contributing"}
+            </Button>
+          </Link>
+          <Link to="/login">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="border-2 border-accent text-accent hover:bg-accent/10 font-semibold px-8 py-6 text-lg"
+            >
+              {isHausa ? "Shiga Yanzu" : "Sign In Now"}
+            </Button>
+          </Link>
         </div>
         
         {/* Quick Links */}
@@ -52,28 +63,34 @@ const CallToAction = () => {
         {/* Social Icons */}
         <div className="flex gap-4 justify-center">
           <a
-            href="#"
-            className="h-12 w-12 rounded-full border-2 border-primary/50 flex items-center justify-center hover:bg-primary/10 hover:border-primary transition-all glow-gold"
-            aria-label="GitHub"
-          >
-            <Github className="h-5 w-5 text-primary" />
-          </a>
-          <a
-            href="#"
+            href="https://x.com/tushen_ai"
+            target="_blank"
+            rel="noopener noreferrer"
             className="h-12 w-12 rounded-full border-2 border-primary/50 flex items-center justify-center hover:bg-primary/10 hover:border-primary transition-all glow-gold"
             aria-label="Twitter"
           >
             <Twitter className="h-5 w-5 text-primary" />
           </a>
           <a
-            href="#"
+            href="https://www.linkedin.com/in/al-amin-ibrahim-0b7293227/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="h-12 w-12 rounded-full border-2 border-primary/50 flex items-center justify-center hover:bg-primary/10 hover:border-primary transition-all glow-gold"
             aria-label="LinkedIn"
           >
             <Linkedin className="h-5 w-5 text-primary" />
           </a>
           <a
-            href="#"
+            href="https://discord.gg/VRxBxgYCs8"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="h-12 w-12 rounded-full border-2 border-primary/50 flex items-center justify-center hover:bg-primary/10 hover:border-primary transition-all glow-gold"
+            aria-label="Discord"
+          >
+            <MessageCircle className="h-5 w-5 text-primary" />
+          </a>
+          <a
+            href="mailto:ibrahimalamin744@gmail.com"
             className="h-12 w-12 rounded-full border-2 border-primary/50 flex items-center justify-center hover:bg-primary/10 hover:border-primary transition-all glow-gold"
             aria-label="Email"
           >

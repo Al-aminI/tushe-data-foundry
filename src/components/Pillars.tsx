@@ -1,5 +1,6 @@
 import { Mic, FileText, Languages, Cpu } from "lucide-react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const pillars = [
   {
@@ -29,15 +30,20 @@ const pillars = [
 ];
 
 const Pillars = () => {
+  const { isHausa } = useLanguage();
+
   return (
-    <section className="py-32 px-6 bg-background">
+    <section id="pillars" className="py-32 px-6 bg-background">
       <div className="container mx-auto">
         <h2 className="text-4xl md:text-6xl font-display font-bold text-center mb-6 text-primary">
-          Our Pillars of Intelligence
+          {isHausa ? "Ginshiƙan Hankalinmu" : "Our Pillars of Intelligence"}
         </h2>
         
         <p className="text-lg text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
-          The building blocks of Hausa AI, each dedicated to a specific aspect of language intelligence
+          {isHausa 
+            ? "Tushen ginin AI na Hausa, kowannensu an sadaukar da shi ga wani sashe na hankali na harshe"
+            : "The building blocks of Hausa AI, each dedicated to a specific aspect of language intelligence"
+          }
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
@@ -53,9 +59,14 @@ const Pillars = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">{pillar.description}</p>
-                <button className="mt-4 text-accent hover:text-accent/80 transition-colors font-semibold">
+                <a 
+                  href="https://discord.gg/VRxBxgYCs8" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="mt-4 text-accent hover:text-accent/80 transition-colors font-semibold inline-block"
+                >
                   Learn More →
-                </button>
+                </a>
               </CardContent>
             </Card>
           ))}

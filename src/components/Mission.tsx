@@ -1,19 +1,29 @@
+import { useLanguage } from "@/contexts/LanguageContext";
+
 const Mission = () => {
+  const { isHausa } = useLanguage();
+
   return (
-    <section className="py-32 px-6 bg-gradient-to-b from-background to-muted/20">
+    <section id="mission" className="py-32 px-6 bg-gradient-to-b from-background to-muted/20">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
             <h2 className="text-4xl md:text-6xl font-display font-bold mb-8 text-primary">
-              Tushe: Where Data Becomes Understanding
+              {isHausa ? "Tushe: Inda Bayanai Ke Zama Fahimta" : "Tushe: Where Data Becomes Understanding"}
             </h2>
             
             <p className="text-lg md:text-xl text-foreground/90 leading-relaxed mb-6">
-              Tushe is a community-driven data foundry dedicated to building, refining, and democratizing Hausa language datasets — from speech to text, translation, and beyond.
+              {isHausa 
+                ? "Tushe shine tushen bayanai da al'umma ke gudanarwa wanda aka sadaukar don gina, inganta, da raba bayanan harshen Hausa - daga magana zuwa rubutu, fassara, da sauransu."
+                : "Tushe is a community-driven data foundry dedicated to building, refining, and democratizing Hausa language datasets — from speech to text, translation, and beyond."
+              }
             </p>
             
             <p className="text-lg md:text-xl text-foreground/80 leading-relaxed">
-              We aim to create the foundation for Hausa AI models that understand, speak, and think like us.
+              {isHausa 
+                ? "Muna nufin ƙirƙirar tushe don samfuran AI na Hausa waɗanda ke fahimta, magana, da tunani kamar mu."
+                : "We aim to create the foundation for Hausa AI models that understand, speak, and think like us."
+              }
             </p>
           </div>
           
